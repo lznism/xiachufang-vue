@@ -1,5 +1,6 @@
 <template>
     <div id="category">
+        <xcf-header></xcf-header>
         <div id="all-category">
             <section>
                 <h3 class="title">热门分类</h3>
@@ -34,8 +35,12 @@
     </div>
 </template>
 <script>
+import XcfHeader from '@/components/header';
 export default {
-    name: 'Category'
+    name: 'Category',
+    components: {
+        XcfHeader
+    }
 }
 </script>
 <style lang="scss" scoped>
