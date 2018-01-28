@@ -8,5 +8,9 @@ export default new Router({
         path: '/',
         name: 'home',
         component: () => import('@/views/home')
+    }, {
+        path: '/category',
+        name: 'category',
+        component: () => import('@/views/category')
     }]
 });
