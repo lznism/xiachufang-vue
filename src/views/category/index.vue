@@ -44,45 +44,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.title {
-    height: 1.54rem;
-    line-height: 1.54rem;
-    color: #383835;
-    font-weight: bold;
-    font-size: 0.5rem;
-    padding-left: 0.6rem;
-}
-.category-section {
-    padding: 0 0.6rem;
-    display: flex;
-    flex-wrap: wrap;
 
-    .category-item {
-        position: relative;
-        width: 2.1rem;
-        height: 2.1rem;
-        border-radius: 0.1rem;
-        margin: 0 0.39rem 0.39rem 0;
-
-        &:nth-of-type(4n) {
-            margin-right: 0;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-
-        p {
-            position: absolute;
-            width: 100%;
-            text-align: center;
-            color: #fff;
-            font-size: 0.48rem;
-            z-index: 10;
-            bottom: 0.1rem;
-        }
-    }
-}
 </style>
 
