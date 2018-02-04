@@ -10,23 +10,27 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@function r($px) {
+    @return $px / 75 + rem;
+}
 .xcf-header {
-    height: 1.74rem;
-    border-bottom: 1px solid #ccc;
-    padding-left: 0.6rem;
-    font-size: 0;
+    height: r(121);
+    line-height: r(121);
+    border-bottom: 1px solid #f6f6f6;
     position: relative;
+    font-size: 0;
 
     .iconfont {
-        font-size: 0.5rem;
+        font-size: r(28);
         color: #383835;
-        position: absolute;
-        top: 0.6rem;
+        margin-left: r(32);
     }
 
     img {
-        height: 0.78rem;
-        padding: 0.47rem 0 0 0.86rem;
+        height: r(55);
+        position: absolute;
+        top: r(32);
+        left: r(74);
     }
 }
 </style>
