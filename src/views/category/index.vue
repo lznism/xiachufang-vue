@@ -2,40 +2,12 @@
     <div id="category">
         <xcf-header></xcf-header>
         <div id="all-category">
-            <section>
-                <h3 class="title">热门分类</h3>
+            <section v-for="(item, index) in category" :key="index">
+                <h3 class="title">{{item.title}}</h3>
                 <div class="category-section">
-                    <div class="category-item">
-                        <img src="http://s2.cdn.xiachufang.com/a1cb7a48a56011e6947d0242ac110002_200w_200h.jpg">
-                        <p>家常菜</p>
-                    </div>
-                    <div class="category-item">
-                        <img src="http://s2.cdn.xiachufang.com/a1cb7a48a56011e6947d0242ac110002_200w_200h.jpg">
-                        <p>家常菜</p>
-                    </div>
-                    <div class="category-item">
-                        <img src="http://s2.cdn.xiachufang.com/a1cb7a48a56011e6947d0242ac110002_200w_200h.jpg">
-                        <p>家常菜</p>
-                    </div>
-                    <div class="category-item">
-                        <img src="http://s2.cdn.xiachufang.com/a1cb7a48a56011e6947d0242ac110002_200w_200h.jpg">
-                        <p>家常菜</p>
-                    </div>
-                    <div class="category-item">
-                        <img src="http://s2.cdn.xiachufang.com/a1cb7a48a56011e6947d0242ac110002_200w_200h.jpg">
-                        <p>家常菜</p>
-                    </div>
-                    <div class="category-item">
-                        <img src="http://s2.cdn.xiachufang.com/a1cb7a48a56011e6947d0242ac110002_200w_200h.jpg">
-                        <p>家常菜</p>
-                    </div>
-                    <div class="category-item">
-                        <img src="http://s2.cdn.xiachufang.com/a1cb7a48a56011e6947d0242ac110002_200w_200h.jpg">
-                        <p>家常菜</p>
-                    </div>
-                    <div class="category-item">
-                        <img src="http://s2.cdn.xiachufang.com/a1cb7a48a56011e6947d0242ac110002_200w_200h.jpg">
-                        <p>家常菜</p>
+                    <div class="category-item" v-for="(_item, _index) in item.info" :key="_index">
+                        <img :src="_item.imgUrl">
+                        <p>{{_item.title}}</p>
                     </div>
                 </div>
             </section>
@@ -44,10 +16,29 @@
 </template>
 <script>
 import XcfHeader from '@/components/header';
+import http from '@/utils/http';
 export default {
     name: 'Category',
     components: {
         XcfHeader
+    },
+    data() {
+        return {
+            category: []
+        };
+    },
+    created() {
+        this._getCategory();
+    },
+    methods: {
+        _getCategory() {
+            http.get('/category').then(res => {
+                console.log(res);
+                if (res.code === 1) {
+                    this.category = res.message;
+                }
+            })
+        }
     }
 }
 </script>
