@@ -13,24 +13,24 @@
                     <p>家常菜</p>
                 </div>
                 <div class="category-item">
-                    <p>家常菜</p>
+                    <p>快手菜</p>
                 </div>
                 <div class="category-item">
-                    <p>家常菜</p>
+                    <p>下饭菜</p>
                 </div>
             </div>
             <div class="row">
                 <div class="category-item">
-                    <p>家常菜</p>
+                    <p>早餐</p>
                 </div>
                 <div class="category-item">
-                    <p>家常菜</p>
+                    <p>肉</p>
                 </div>
                 <div class="category-item">
-                    <p>家常菜</p>
+                    <p>鱼</p>
                 </div>
             </div>
-            <div class="all-category">全部菜谱分类</div>
+            <router-link tag="div" class="all-category" to="/category">全部菜谱分类</router-link>
         </section>
         <section class="rank">
             <h3>菜谱榜单</h3>
