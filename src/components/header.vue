@@ -1,12 +1,17 @@
 <template>
     <header class="xcf-header">
-        <i class="iconfont icon-zuojiantou"></i>
+        <i class="iconfont icon-zuojiantou" @click="back()"></i>
         <img src="../assets/images/logo.png">
     </header>
 </template>
 <script>
 export default {
-    name: 'xcf-header'
+    name: 'xcf-header',
+    methods: {
+        back () {
+            this.$router.go(-1);
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

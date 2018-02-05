@@ -4,7 +4,7 @@
         <div id="all-category">
             <section v-for="(item, index) in category" :key="index">
                 <h3 class="title">{{item.title}}</h3>
-                <div class="category-section">
+                <div class="category-section clearfix">
                     <div class="category-item" v-for="(_item, _index) in item.info" :key="_index">
                         <img :src="_item.imgUrl">
                         <p>{{_item.title}}</p>
@@ -50,15 +50,12 @@ export default {
     }
 
     .category-section {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-
         .category-item {
             margin: 0 r(27) r(27) 0;
             position: relative;
             width: r(142);
             height: r(142);
+            float: left;
 
             &:nth-of-type(4n) {
                 margin-right: 0;
@@ -75,8 +72,11 @@ export default {
                 position: absolute;
                 text-align: center;
                 width: 100%;
+                overflow: hidden;
                 bottom: r(10);
                 font-weight: bold;
+                white-space:nowrap;
+                text-overflow:ellipsis;
             }
         }
     }
