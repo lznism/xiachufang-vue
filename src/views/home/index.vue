@@ -35,42 +35,65 @@
         <section class="rank">
             <h3>菜谱榜单</h3>
             <div class="explore">
-                <div class="explore-item">
-                    <img src="http://s2.cdn.xiachufang.com/6643b0a5f811419ca7f445cd50a72d18_1080w_720h.jpg?imageView2/1/w/560/h/340/interlace/1/q/90" alt="">
-                    <p class="title">发现新菜</p>
-                    <p class="desc">新创建的菜谱</p>
-                </div>
-                <div class="explore-item">
-                    <img src="http://s2.cdn.xiachufang.com/6643b0a5f811419ca7f445cd50a72d18_1080w_720h.jpg?imageView2/1/w/560/h/340/interlace/1/q/90" alt="">
-                    <p class="title">发现新菜</p>
-                    <p class="desc">新创建的菜谱</p>
-                </div>
-                <div class="explore-item">
-                    <img src="http://s2.cdn.xiachufang.com/6643b0a5f811419ca7f445cd50a72d18_1080w_720h.jpg?imageView2/1/w/560/h/340/interlace/1/q/90" alt="">
-                    <p class="title">发现新菜</p>
-                    <p class="desc">新创建的菜谱</p>
+                <div class="explore-item" v-for="(item, index) in rankMenu.head" :key="index">
+                    <img :src="item.imgUrl">
+                    <p class="title">{{item.title}}</p>
+                    <p class="desc">{{item.description}}</p>
                 </div>
             </div>
             <div class="rank-list">
-                <div class="rank-item">
-                    <img src="http://s2.cdn.xiachufang.com/6643b0a5f811419ca7f445cd50a72d18_1080w_720h.jpg?imageView2/1/w/560/h/340/interlace/1/q/90" alt="">
+                <div class="rank-item" v-for="(item, index) in rankMenu.body" :key="index">
+                    <img :src="item.imgUrl">
                     <div class="content">
-                        <p class="title">哈哈哈哈</p>
-                        <p class="desc">哈哈哈哈</p>
+                        <p class="title">{{item.title}}</p>
+                        <p class="desc">
+                            <span v-if="item.rate">评分{{item.rate}}</span>
+                            <span v-if="item.doneNum">{{item.doneNum}}人做过</span>
+                        </p>
                     </div>
                 </div>
-                <div class="rank-item">
-                    <img src="http://s2.cdn.xiachufang.com/6643b0a5f811419ca7f445cd50a72d18_1080w_720h.jpg?imageView2/1/w/560/h/340/interlace/1/q/90" alt="">
+            </div>
+        </section>
+        <section class="rank">
+            <h3>流行菜单</h3>
+            <div class="explore">
+                <div class="explore-item" v-for="(item, index) in popMenu.head" :key="index">
+                    <img :src="item.imgUrl">
+                    <p class="title">{{item.title}}</p>
+                    <p class="desc">{{item.description}}</p>
+                </div>
+            </div>
+            <div class="rank-list">
+                <div class="rank-item" v-for="(item, index) in popMenu.body" :key="index">
+                    <img :src="item.imgUrl">
                     <div class="content">
-                        <p class="title">哈哈哈哈</p>
-                        <p class="desc">哈哈哈哈</p>
+                        <p class="title">{{item.title}}</p>
+                        <p class="desc">
+                            <span v-if="item.rate">评分{{item.rate}}</span>
+                            <span v-if="item.doneNum">{{item.doneNum}}人做过</span>
+                        </p>
                     </div>
                 </div>
-                <div class="rank-item">
-                    <img src="http://s2.cdn.xiachufang.com/6643b0a5f811419ca7f445cd50a72d18_1080w_720h.jpg?imageView2/1/w/560/h/340/interlace/1/q/90" alt="">
+            </div>
+        </section>
+        <section class="rank">
+            <h3>新秀菜单</h3>
+            <div class="explore">
+                <div class="explore-item" v-for="(item, index) in risingMenu.head" :key="index">
+                    <img :src="item.imgUrl">
+                    <p class="title">{{item.title}}</p>
+                    <p class="desc">{{item.description}}</p>
+                </div>
+            </div>
+            <div class="rank-list">
+                <div class="rank-item" v-for="(item, index) in risingMenu.body" :key="index">
+                    <img :src="item.imgUrl">
                     <div class="content">
-                        <p class="title">哈哈哈哈</p>
-                        <p class="desc">哈哈哈哈</p>
+                        <p class="title">{{item.title}}</p>
+                        <p class="desc">
+                            <span v-if="item.rate">评分{{item.rate}}</span>
+                            <span v-if="item.doneNum">{{item.doneNum}}人做过</span>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -78,8 +101,20 @@
     </div>
 </template>
 <script>
+import { mapGetters, mapActions } from 'vuex';
 export default {
-    name: 'Home'
+    name: 'Home',
+    created () {
+        this.getRankMenu();
+        this.getPopMenu();
+        this.getRisingMenu();
+    },
+    computed: {
+        ...mapGetters(['rankMenu', 'popMenu', 'risingMenu'])
+    },
+    methods: {
+        ...mapActions(['getRankMenu', 'getPopMenu', 'getRisingMenu'])
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -232,10 +267,11 @@ header {
         display: flex;
         margin-bottom: r(30);
 
-        img {
+        & > img {
             margin-right: r(24);
             width: r(292);
             height: r(198);
+            flex-shrink:0;
         }
 
         .content {
