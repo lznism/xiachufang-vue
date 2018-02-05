@@ -234,6 +234,8 @@ header {
 
         img {
             margin-right: r(24);
+            width: r(292);
+            height: r(198);
         }
 
         .content {

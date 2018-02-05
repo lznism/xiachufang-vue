@@ -16,29 +16,20 @@
 </template>
 <script>
 import XcfHeader from '@/components/header';
-import http from '@/utils/http';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     name: 'Category',
     components: {
         XcfHeader
     },
-    data() {
-        return {
-            category: []
-        };
+    computed: {
+        ...mapGetters(['category'])
     },
     created() {
-        this._getCategory();
+        this.getCategory();
     },
     methods: {
-        _getCategory() {
-            http.get('/category').then(res => {
-                console.log(res);
-                if (res.code === 1) {
-                    this.category = res.message;
-                }
-            })
-        }
+        ...mapActions(['getCategory'])
     }
 }
 </script>

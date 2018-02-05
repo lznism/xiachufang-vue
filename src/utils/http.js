@@ -12,6 +12,8 @@ export default {
         }).then(res => res.data);
     },
     post(url, data) {
-        return http.post(url, data);
+        return http.post(url, data).then(res => {
+            return res.data;
+        });
     }
 }
