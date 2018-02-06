@@ -3,5 +3,6 @@ export default {
     rankMenu: [],
     popMenu: [],
     risingMenu: [],
-    categoryItemList: []
+    categoryItemList: [],
+    categoryItemTitle: ''
 };

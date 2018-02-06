@@ -2,33 +2,33 @@
     <div class="category-item">
         <xcf-header></xcf-header>
         <div class="head">
-            <p class="title">家常菜</p>
+            <p class="title">{{categoryItemTitle}}</p>
             <p class="choice">
-                <span class="welcome">最受欢迎</span>
-                <span>最近流行</span>
+                <router-link :to="`/category/${id}/pop`" class="welcome">最受欢迎</router-link>
+                <router-link :to="`/category/${id}/recent`">最近流行</router-link>
             </p>
         </div>
-        <menu-list :list="categoryItemList"></menu-list>
+        <router-view></router-view>
     </div>
 </template>
 <script>
 import XcfHeader from '@/components/header';
-import MenuList from '@/components/menu-list';
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 export default {
     components: {
-        XcfHeader,
-        MenuList
+        XcfHeader
+    },
+    data () {
+        return {
+            id: ''
+        };
     },
     computed: {
-        ...mapGetters(['categoryItemList'])
+        ...mapGetters(['categoryItemTitle'])
     },
     created () {
         let id = this.$route.params.id;
-        this.getCategoryItemList(id);
-    },
-    methods: {
-        ...mapActions(['getCategoryItemList'])
+        this.id = id;
     }
 }
 </script>

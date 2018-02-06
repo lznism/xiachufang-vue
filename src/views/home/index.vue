@@ -9,26 +9,26 @@
         </section>
         <section class="category">
             <div class="row">
-                <div class="category-item">
+                <router-link tag="div" @click.native="setTitle('家常菜')" to="/category/40076" class="category-item">
                     <p>家常菜</p>
-                </div>
-                <div class="category-item">
+                </router-link>
+                <router-link tag="div" @click.native="setTitle('快手菜')" to="/category/40077" class="category-item">
                     <p>快手菜</p>
-                </div>
-                <div class="category-item">
+                </router-link>
+                <router-link tag="div" @click.native="setTitle('下饭菜')" to="/category/40078" class="category-item">
                     <p>下饭菜</p>
-                </div>
+                </router-link>
             </div>
             <div class="row">
-                <div class="category-item">
+                <router-link tag="div" @click.native="setTitle('早餐')" to="/category/40071" class="category-item">
                     <p>早餐</p>
-                </div>
-                <div class="category-item">
+                </router-link>
+                <router-link tag="div" @click.native="setTitle('肉')" to="/category/1012713" class="category-item">
                     <p>肉</p>
-                </div>
-                <div class="category-item">
+                </router-link>
+                <router-link tag="div" @click.native="setTitle('鱼')" to="/category/957" class="category-item">
                     <p>鱼</p>
-                </div>
+                </router-link>
             </div>
             <router-link tag="div" class="all-category" to="/category">全部菜谱分类</router-link>
         </section>
@@ -101,7 +101,8 @@
     </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters, mapActions, mapMutations } from 'vuex';
+import * as types from '@/store/mutation-types';
 export default {
     name: 'Home',
     created () {
@@ -113,7 +114,10 @@ export default {
         ...mapGetters(['rankMenu', 'popMenu', 'risingMenu'])
     },
     methods: {
-        ...mapActions(['getRankMenu', 'getPopMenu', 'getRisingMenu'])
+        ...mapActions(['getRankMenu', 'getPopMenu', 'getRisingMenu']),
+        ...mapMutations({
+            setTitle: types.SET_CATEGORY_ITEM_TITLE
+        })
     }
 }
 </script>

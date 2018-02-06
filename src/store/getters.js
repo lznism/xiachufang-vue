@@ -7,3 +7,5 @@ export const popMenu = state => state.popMenu;
 export const risingMenu = state => state.risingMenu;
 
 export const categoryItemList = state => state.categoryItemList;
+
+export const categoryItemTitle = state => state.categoryItemTitle;

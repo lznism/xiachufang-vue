@@ -33,8 +33,8 @@ export const getRisingMenu = ({commit}) => {
     });
 };
 
-export const getCategoryItemList = ({commit}, id) => {
-    http.get(`/category/${id}`).then(res => {
+export const getCategoryItemList = ({commit}, {id, recent='/'}) => {
+    http.get(`/category/${id}${recent}`).then(res => {
         if (res.code === 1) {
             commit(types.SET_CATEGORY_ITEM_LIST, res.message);
         }

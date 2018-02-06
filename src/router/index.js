@@ -14,7 +14,19 @@ export default new Router({
         component: () => import('@/views/category')
     }, {
         path: '/category/:id',
+        redirect: '/category/:id/pop'
+    }, {
+        path: '/category/:id',
         name: 'category-item',
-        component: () => import('@/views/category-item')
+        component: () => import('@/views/category-item'),
+        children: [{
+            path: 'pop',
+            name: 'category-item:pop',
+            component: () => import('@/views/category-item/pop')
+        }, {
+            path: 'recent',
+            name: 'category-item:recent',
+            component: () => import('@/views/category-item/recent')
+        }]
     }]
 });

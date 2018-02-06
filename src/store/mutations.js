@@ -15,5 +15,8 @@ export default {
     },
     [types.SET_CATEGORY_ITEM_LIST](state, list) {
         state.categoryItemList = list;
+    },
+    [types.SET_CATEGORY_ITEM_TITLE](state, title) {
+        state.categoryItemTitle = title;
     }
 };
