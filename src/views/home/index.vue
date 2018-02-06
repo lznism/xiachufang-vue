@@ -32,18 +32,18 @@
             </div>
             <router-link tag="div" class="all-category" to="/category">全部菜谱分类</router-link>
         </section>
-        <section class="rank">
+        <section class="list">
             <h3>菜谱榜单</h3>
-            <div class="explore">
-                <div class="explore-item" v-for="(item, index) in rankMenu.head" :key="index">
-                    <img :src="item.imgUrl">
+            <div class="list-head">
+                <div class="head-item" v-for="(item, index) in rankMenu.head" :key="index">
+                    <img v-lazy="item.imgUrl">
                     <p class="title">{{item.title}}</p>
                     <p class="desc">{{item.description}}</p>
                 </div>
             </div>
-            <div class="rank-list">
-                <div class="rank-item" v-for="(item, index) in rankMenu.body" :key="index">
-                    <img :src="item.imgUrl">
+            <div class="list-body">
+                <div class="body-item" v-for="(item, index) in rankMenu.body" :key="index">
+                    <img v-lazy="item.imgUrl">
                     <div class="content">
                         <p class="title">{{item.title}}</p>
                         <p class="desc">
@@ -54,18 +54,18 @@
                 </div>
             </div>
         </section>
-        <section class="rank">
+        <section class="list">
             <h3>流行菜单</h3>
-            <div class="explore">
-                <div class="explore-item" v-for="(item, index) in popMenu.head" :key="index">
-                    <img :src="item.imgUrl">
+            <div class="list-head">
+                <div class="head-item" v-for="(item, index) in popMenu.head" :key="index">
+                    <img v-lazy="item.imgUrl">
                     <p class="title">{{item.title}}</p>
                     <p class="desc">{{item.description}}</p>
                 </div>
             </div>
-            <div class="rank-list">
-                <div class="rank-item" v-for="(item, index) in popMenu.body" :key="index">
-                    <img :src="item.imgUrl">
+            <div class="list-body">
+                <div class="body-item" v-for="(item, index) in popMenu.body" :key="index">
+                    <img v-lazy="item.imgUrl">
                     <div class="content">
                         <p class="title">{{item.title}}</p>
                         <p class="desc">
@@ -76,18 +76,18 @@
                 </div>
             </div>
         </section>
-        <section class="rank">
+        <section class="list">
             <h3>新秀菜单</h3>
-            <div class="explore">
-                <div class="explore-item" v-for="(item, index) in risingMenu.head" :key="index">
-                    <img :src="item.imgUrl">
+            <div class="list-head">
+                <div class="head-item" v-for="(item, index) in risingMenu.head" :key="index">
+                    <img v-lazy="item.imgUrl">
                     <p class="title">{{item.title}}</p>
                     <p class="desc">{{item.description}}</p>
                 </div>
             </div>
-            <div class="rank-list">
-                <div class="rank-item" v-for="(item, index) in risingMenu.body" :key="index">
-                    <img :src="item.imgUrl">
+            <div class="list-body">
+                <div class="body-item" v-for="(item, index) in risingMenu.body" :key="index">
+                    <img v-lazy="item.imgUrl">
                     <div class="content">
                         <p class="title">{{item.title}}</p>
                         <p class="desc">
@@ -221,7 +221,7 @@ header {
     }
 }
 
-.rank {
+.list {
     padding: 0 r(42);
 
     h3 {
@@ -231,12 +231,12 @@ header {
         color: #383838;
     }
 
-    .explore {
+    .list-head {
         display: flex;
         overflow-x: auto;
     }
 
-    .explore-item {
+    .head-item {
         padding-bottom: r(30);
         margin-right: r(20);
 
@@ -260,10 +260,10 @@ header {
         }
     }
 }
-.rank-list {
+.list-body {
     margin-top: r(20);
 
-    .rank-item {
+    .body-item {
         display: flex;
         margin-bottom: r(30);
 

@@ -6,7 +6,7 @@
                 <h3 class="title">{{item.title}}</h3>
                 <div class="category-section clearfix">
                     <div class="category-item" v-for="(_item, _index) in item.info" :key="_index">
-                        <img :src="_item.imgUrl">
+                        <img v-lazy="_item.imgUrl">
                         <p>{{_item.title}}</p>
                     </div>
                 </div>
