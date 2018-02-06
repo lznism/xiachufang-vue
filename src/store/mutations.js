@@ -12,5 +12,8 @@ export default {
     },
     [types.SET_RISING_MENU](state, risingMenu) {
         state.risingMenu = risingMenu;
+    },
+    [types.SET_CATEGORY_ITEM_LIST](state, list) {
+        state.categoryItemList = list;
     }
 };

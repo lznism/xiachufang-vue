@@ -12,5 +12,9 @@ export default new Router({
         path: '/category',
         name: 'category',
         component: () => import('@/views/category')
+    }, {
+        path: '/category/:id',
+        name: 'category-item',
+        component: () => import('@/views/category-item')
     }]
 });
