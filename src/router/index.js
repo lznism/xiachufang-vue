@@ -28,5 +28,9 @@ export default new Router({
             name: 'category-item:recent',
             component: () => import('@/views/category-item/recent')
         }]
+    }, {
+        path: '/menu/:id',
+        name: 'menu-item',
+        component: () => import('@/views/menu-item')
     }]
 });
