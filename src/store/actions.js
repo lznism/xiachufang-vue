@@ -40,3 +40,11 @@ export const getCategoryItemList = ({commit}, {id, recent='/'}) => {
         }
     });
 };
+
+export const getMenuDetail = ({commit}, id) => {
+    http.get(`/recipe/${id}`).then(res => {
+        if (res.code === 1) {
+            commit(types.SET_MENU_DETAIL, res.message);
+        }
+    });
+};

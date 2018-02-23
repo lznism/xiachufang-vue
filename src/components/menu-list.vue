@@ -1,6 +1,6 @@
 <template>
     <div class="list">
-        <div class="list-item" v-for="(item, index) in list" :key="index">
+        <router-link tag="div" :to="item.href" class="list-item" v-for="(item, index) in list" :key="index">
             <img v-lazy="item.imgUrl">
             <div class="content">
                 <p class="title">{{item.title}}</p>
@@ -9,7 +9,7 @@
                     <span v-if="item.doneNum">{{item.doneNum}}人做过</span>
                 </p>
             </div>
-        </div>
+        </router-link>
     </div>
 </template>
 <script>

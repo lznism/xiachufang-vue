@@ -29,7 +29,7 @@ export default new Router({
             component: () => import('@/views/category-item/recent')
         }]
     }, {
-        path: '/menu/:id',
+        path: '/recipe/:id',
         name: 'menu-item',
         component: () => import('@/views/menu-item')
     }]

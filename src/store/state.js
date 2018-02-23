@@ -4,5 +4,6 @@ export default {
     popMenu: [],
     risingMenu: [],
     categoryItemList: [],
-    categoryItemTitle: ''
+    categoryItemTitle: '',
+    menuDetail: {}
 };

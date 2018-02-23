@@ -2,45 +2,56 @@
     <div>
         <xcf-header></xcf-header>
         <div class="head-img">
-            <img src="http://s2.cdn.xiachufang.com/d584500a529a4573afccd21d66d937e1_1280w_854h.jpg?imageView2/1/w/640/h/520/interlace/1/q/90">
+            <img v-lazy="menuDetail.headImgUrl">
         </div>
         <div class="title">
-            <h1>主标题</h1>
+            <h1>{{menuDetail.title}}</h1>
             <p>
-                <span>9.3综合评分</span>
-                <span>76人做过</span>
+                <span>{{menuDetail.rate}}综合评分</span>
+                <span>{{menuDetail.doneNum}}人做过</span>
             </p>
         </div>
         <div class="description">
-            description
+            {{menuDetail.description}}
         </div>
         <div class="userinfo">
-            <p class="author">作者：aaa</p>
+            <p class="author">作者：{{menuDetail.author}}</p>
             <img class="avatar" src="http://s2.cdn.xiachufang.com/d584500a529a4573afccd21d66d937e1_1280w_854h.jpg?imageView2/1/w/640/h/520/interlace/1/q/90">
         </div>
         <table class="materials">
             <tr>
                 <td colspan="2">用料</td>
             </tr>
-            <tr>
-                <td>材料</td>
-                <td>用量</td>
+            <tr v-for="(item, index) in menuDetail.materials" :key="index">
+                <td>{{item.ingredient}}</td>
+                <td>{{item.weight}}</td>
             </tr>
         </table>
         <ul class="steps">
-            <li>
-                <p class="step-num">步骤1</p>
-                <img src="http://s2.cdn.xiachufang.com/d584500a529a4573afccd21d66d937e1_1280w_854h.jpg?imageView2/1/w/640/h/520/interlace/1/q/90">
-                <p class="desc">全部食材</p>
+            <li v-for="(item, index) in menuDetail.steps" :key="index">
+                <p class="step-num">{{item.subTitle}}</p>
+                <img v-lazy="item.stepImg" v-if="item.stepImg">
+                <p class="desc">{{item.description}}</p>
             </li>
         </ul>
     </div>
 </template>
 <script>
     import XcfHeader from '@/components/header';
+    import { mapActions, mapGetters } from 'vuex';
     export default {
         components: {
             XcfHeader
+        },
+        computed: {
+            ...mapGetters(['menuDetail'])
+        },
+        created () {
+            let id = this.$route.params.id;
+            this.getMenuDetail(id);
+        },
+        methods: {
+            ...mapActions(['getMenuDetail'])
         }
     }
 </script>

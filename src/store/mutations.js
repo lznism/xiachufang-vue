@@ -18,5 +18,8 @@ export default {
     },
     [types.SET_CATEGORY_ITEM_TITLE](state, title) {
         state.categoryItemTitle = title;
+    },
+    [types.SET_MENU_DETAIL](state, detail) {
+        state.menuDetail = detail;
     }
 };
