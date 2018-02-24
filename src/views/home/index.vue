@@ -35,11 +35,11 @@
         <section class="list">
             <h3>菜谱榜单</h3>
             <div class="list-head">
-                <div class="head-item" v-for="(item, index) in rankMenu.head" :key="index">
+                <router-link tag="div" :to="item.href" class="head-item" v-for="(item, index) in rankMenu.head" :key="index">
                     <img v-lazy="item.imgUrl">
                     <p class="title">{{item.title}}</p>
                     <p class="desc">{{item.description}}</p>
-                </div>
+                </router-link>
             </div>
             <div class="list-body">
                 <router-link tag="div" class="body-item" :to="item.href" v-for="(item, index) in rankMenu.body" :key="index">

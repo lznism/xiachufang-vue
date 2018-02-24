@@ -1,27 +1,40 @@
 <template>
-    <div class="rank-detail">
+    <div>
         <xcf-header></xcf-header>
-        <h1 class="title">发现新菜</h1>
-        <ul class="list">
-            <li>
-                <img class="menu-pic" src="http://s2.cdn.xiachufang.com/cb27950d86684bffae28cb44c6509c1e_6000w_3750h.jpg?imageView2/2/w/620/interlace/1/q/90">
-                <div class="wrapper">
-                    <div class="info">
-                        <p class="title">【蒸三样】</p>
-                        <p class="author">夏夏和秋秋</p>
-                        <p class="doneNum">0人做过</p>
+        <div class="rank-detail">
+            <h1 class="title">{{rankDetail.title}}</h1>
+            <ul class="list">
+                <router-link tag="li" :to="item.href" v-for="(item, index) in rankDetail.explore" :key="index">
+                    <img class="menu-pic" v-lazy="item.imgUrl">
+                    <div class="wrapper">
+                        <div class="info">
+                            <p class="title">{{item.menuName}}</p>
+                            <p class="author">{{item.author}}</p>
+                            <p class="doneNum">{{item.doneNum}}人做过</p>
+                        </div>
+                        <img class="avatar" v-lazy="item.authorImg">
                     </div>
-                    <img class="avatar" src="http://s2.cdn.xiachufang.com/7d6a42b4912d4225baa7893c5106a2cc_1196w_1079h.jpg?imageView2/1/w/160/h/160/interlace/1/q/90">
-                </div>
-            </li>
-        </ul>
+                </router-link>
+            </ul>
+        </div>
     </div>
 </template>
 <script>
 import XcfHeader from '@/components/header';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     components: {
         XcfHeader
+    },
+    computed: {
+        ...mapGetters(['rankDetail'])
+    },
+    created () {
+        let type = this.$route.params.type;
+        this.getRankDetail(type);
+    },
+    methods: {
+        ...mapActions(['getRankDetail'])
     }
 };
 </script>
