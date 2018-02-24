@@ -21,5 +21,8 @@ export default {
     },
     [types.SET_MENU_DETAIL](state, detail) {
         state.menuDetail = detail;
+    },
+    [types.SET_RANK_DETAIL](state, detail) {
+        state.rankDetail = detail;
     }
 };

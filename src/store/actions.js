@@ -48,3 +48,11 @@ export const getMenuDetail = ({commit}, id) => {
         }
     });
 };
+
+export const getRankDetail = ({commit}, type) => {
+    http.get(`/explore/${type}`).then(res => {
+        if (res.code === 1) {
+            commit(types.SET_RANK_DETAIL, res.message);
+        }
+    });
+};

@@ -5,5 +5,6 @@ export default {
     risingMenu: [],
     categoryItemList: [],
     categoryItemTitle: '',
-    menuDetail: {}
+    menuDetail: {},
+    rankDetail: {}
 };
