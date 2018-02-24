@@ -32,5 +32,9 @@ export default new Router({
         path: '/recipe/:id',
         name: 'menu-item',
         component: () => import('@/views/menu-item')
+    }, {
+        path: '/explore/:type',
+        name: 'explore',
+        component: () => import('@/views/rank-detail')
     }]
 });
