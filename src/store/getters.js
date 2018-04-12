@@ -13,3 +13,5 @@ export const categoryItemTitle = state => state.categoryItemTitle;
 export const menuDetail = state => state.menuDetail;
 
 export const rankDetail = state => state.rankDetail;
+
+export const searchResults = state => state.searchResults;

@@ -24,5 +24,8 @@ export default {
     },
     [types.SET_RANK_DETAIL](state, detail) {
         state.rankDetail = detail;
+    },
+    [types.SET_SEARCH_RESULT](state, results) {
+        state.searchResults = results;
     }
 };

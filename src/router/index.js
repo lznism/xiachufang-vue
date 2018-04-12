@@ -36,5 +36,9 @@ export default new Router({
         path: '/explore/:type',
         name: 'explore',
         component: () => import('@/views/rank-detail')
+    }, {
+        path: '/search',
+        name: 'search',
+        component: () => import('@/views/search-result')
     }]
 });

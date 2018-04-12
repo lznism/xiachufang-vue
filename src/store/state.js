@@ -6,5 +6,6 @@ export default {
     categoryItemList: [],
     categoryItemTitle: '',
     menuDetail: {},
-    rankDetail: {}
+    rankDetail: {},
+    searchResults: []
 };

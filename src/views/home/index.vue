@@ -3,10 +3,7 @@
         <header>
             <img src="../../assets/images/logo.png" alt="logo" class="logo">
         </header>
-        <section class="search">
-            <input type="text" placeholder="搜索菜谱、食材">
-            <i class="iconfont icon-fangdajing"></i>
-        </section>
+        <search></search>
         <section class="category">
             <div class="row">
                 <router-link tag="div" @click.native="setTitle('家常菜')" to="/category/40076" class="category-item">
@@ -103,18 +100,21 @@
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import * as types from '@/store/mutation-types';
+import Search from '@/components/search';
 export default {
     name: 'Home',
+    components: {
+        Search
+    },
     created () {
-        this.getRankMenu();
-        this.getPopMenu();
-        this.getRisingMenu();
+        this.getHome();
     },
     computed: {
         ...mapGetters(['rankMenu', 'popMenu', 'risingMenu'])
     },
     methods: {
-        ...mapActions(['getRankMenu', 'getPopMenu', 'getRisingMenu']),
+        ...mapActions(['getHome']),
+
         ...mapMutations({
             setTitle: types.SET_CATEGORY_ITEM_TITLE
         })

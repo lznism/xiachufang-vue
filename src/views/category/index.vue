@@ -5,7 +5,7 @@
             <section v-for="(item, index) in category" :key="index">
                 <h3 class="title">{{item.title}}</h3>
                 <div class="category-section clearfix">
-                    <div class="category-item" v-for="(_item, _index) in item.info" :key="_index">
+                    <div class="category-item" v-for="(_item, _index) in item.info" :key="_index" @click="handleClick(_item.href)">
                         <img v-lazy="_item.imgUrl">
                         <p>{{_item.title}}</p>
                     </div>
@@ -16,7 +16,8 @@
 </template>
 <script>
 import XcfHeader from '@/components/header';
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
+import { SET_CATEGORY_ITEM_TITLE } from '@/store/mutation-types';
 export default {
     name: 'Category',
     components: {
@@ -29,7 +30,16 @@ export default {
         this.getCategory();
     },
     methods: {
-        ...mapActions(['getCategory'])
+        ...mapActions(['getCategory', 'getSearch']),
+        ...mapMutations({
+            setTitle: SET_CATEGORY_ITEM_TITLE
+        }),
+
+        handleClick (href) {
+            let keyword = href.split('=')[1];
+            this.setTitle(keyword);
+            this.getSearch(keyword);
+        }
     }
 }
 </script>

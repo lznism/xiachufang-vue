@@ -16,7 +16,7 @@
         </div>
         <div class="userinfo">
             <p class="author">作者：{{menuDetail.author}}</p>
-            <img class="avatar" src="http://s2.cdn.xiachufang.com/d584500a529a4573afccd21d66d937e1_1280w_854h.jpg?imageView2/1/w/640/h/520/interlace/1/q/90">
+            <img class="avatar" :src="menuDetail.avatar">
         </div>
         <table class="materials">
             <tr>
